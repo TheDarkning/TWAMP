@@ -571,7 +571,8 @@ func setupSignals() {
 	c := make(chan os.Signal, 1)
 	signal.Notify(c, syscall.SIGINT, syscall.SIGTERM)
 
-	go handleSignals(c)
+	//go handleSignals(c)
+	handleSignals(c)
 }
 
 func main() {
