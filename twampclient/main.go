@@ -20,7 +20,7 @@ func main() {
 
 	session, err := connection.CreateSession(
 		twamp.TwampSessionConfig{
-			Port:    6666,
+			Port:    666,
 			Timeout: 1,
 			Padding: 42,
 			TOS:     twamp.EF,

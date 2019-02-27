@@ -212,6 +212,7 @@ func serveClient(conn net.Conn, udp_port uint16) error {
 	_, err = receiveStopSessions(conn)
 	if err != nil {
 		return fmt.Errorf("Error receiving stop sessions: %s", err)
+		cleanup()
 	}
 
 	glog.Infoln("Finished control connection from client", conn.RemoteAddr())
