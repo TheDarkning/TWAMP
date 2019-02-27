@@ -42,7 +42,7 @@ func main() {
 	//for _, result := range results.Results {
 	//	fmt.Println(result.GetRTT())
 	//}
-	fmt.Println(results.Stat)
+	fmt.Printf("Media: %v, StDev %v, Persi: %v\n", results.Stat.Avg, results.Stat.StdDev, results.Stat.Loss)
 
 	session.Stop()
 	connection.Close()
