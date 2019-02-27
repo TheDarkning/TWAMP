@@ -572,7 +572,7 @@ func setupSignals() {
 	signal.Notify(c, syscall.SIGINT, syscall.SIGTERM)
 
 	//go handleSignals(c)
-	handleSignals(c)
+	go handleSignals(c)
 }
 
 func main() {
