@@ -156,6 +156,7 @@ func handleClient(conn net.Conn, udp_port uint16) {
 	err := serveClient(conn, udp_port)
 	if err != nil {
 		glog.Error(err)
+		cleanup()
 	}
 }
 
