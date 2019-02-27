@@ -11,6 +11,7 @@ import (
 	"os"
 	"os/signal"
 	"strconv"
+	"sync"
 	"syscall"
 	"time"
 
@@ -131,6 +132,8 @@ type TestResponse struct {
 	SenderTTL       byte
 }
 
+var wg sync.WaitGroup
+
 func serveTwamp(listen string, udp_start uint) error {
 	sock, err := net.Listen("tcp", listen)
 	if err != nil {
@@ -147,17 +150,21 @@ func serveTwamp(listen string, udp_start uint) error {
 			return fmt.Errorf("Error accepting connection: %s", err)
 		}
 
+		wg.Add(1)
 		go handleClient(conn, udp_port)
-		udp_port++
+		wg.Wait()
+		//udp_port++
 	}
 }
 
 func handleClient(conn net.Conn, udp_port uint16) {
+	defer wg.Done()
 	err := serveClient(conn, udp_port)
 	if err != nil {
 		glog.Error(err)
-		cleanup()
+		//cleanup()
 	}
+
 }
 
 func serveClient(conn net.Conn, udp_port uint16) error {
