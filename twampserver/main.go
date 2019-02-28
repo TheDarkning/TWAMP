@@ -149,7 +149,7 @@ func serveTwamp(listen string, udp_start uint) error {
 		if err != nil {
 			return fmt.Errorf("Error accepting connection: %s", err)
 		}
-		udp_port++
+		//udp_port++
 
 		wg.Add(1)
 		go handleClient(conn, udp_port)
@@ -586,7 +586,7 @@ func setupSignals() {
 
 func main() {
 	listenPtr := flag.String("listen", "localhost:2000", "listen address")
-	udpStart := flag.Uint("udp-start", 6666, "initial UDP port for tests")
+	udpStart := flag.Uint("udp-start", 2000, "initial UDP port for tests")
 	flag.Parse()
 
 	setupSignals()

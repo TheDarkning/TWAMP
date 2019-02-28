@@ -18,6 +18,7 @@ func main() {
 
 	c := twamp.NewClient()
 	port := 6666 + rand.Intn(1000)
+	port = 6666
 	//fmt.Println(port)
 	connection, err := c.Connect(*twampserver)
 	if err != nil {
