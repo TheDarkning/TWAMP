@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" rel="stylesheet">
+    <title>TWAMP Test Interface</title>
+</head>
+<body>
+    <nav class="container-fluid">
+        <ul>
+            <li><strong>TWAMP Test GUI</strong></li>
+        </ul>
+        <ul>
+            <li><a href="#config">Configure</a></li>
+            <li><a href="#results">Results</a></li>
+            <li><a href="#" role="button">Start Test</a></li>
+        </ul>
+    </nav>
+    <main class="container">
+        <!-- <div class="grid"> -->
+            <section id="config">
+                <hgroup>
+                    <h2>Configuration</h2>
+                    <h3>Setup your TWAMP test parameters</h3>
+                </hgroup>
+                <form class="grid">
+                    <label for="target-ip">Target IP:</label>
+                    <input type="text" id="target-ip" name="target-ip" placeholder="e.g., 192.168.1.1" required>
+                    <label for="test-duration">Test Duration (seconds):</label>
+                    <input type="number" id="test-duration" name="test-duration" placeholder="e.g., 60" required>
+                    <label for="packet-size">Packet Size (bytes):</label>
+                    <input type="number" id="packet-size" name="packet-size" placeholder="e.g., 1200" required>
+                    <button type="submit" onclick="event.preventDefault()">Save Configuration</button>
+                </form>
+            </section>
+            <section id="results">
+                <hgroup>
+                    <h2>Results</h2>
+                    <h3>View your test outcomes</h3>
+                </hgroup>
+                <p>No results to display. Start a test to see results here.</p>
+            </section>
+        <!-- </div> -->
+    </main>
+    <footer class="container">
+        <small>
+            <a href="#">Privacy Policy</a> • <a href="#">Terms of Use</a>
+        </small>
+    </footer>
+</body>
+</html>
