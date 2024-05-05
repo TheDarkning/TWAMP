@@ -1,0 +1,16 @@
+﻿  main.cpp
+C:\Users\erinzha\.conan2\p\inja62ccb399ee74d\p\include\inja\renderer.hpp(378,71): warning C4244: 'initializing': conversion from 'ValueType' to 'int', possible loss of data
+C:\Users\erinzha\.conan2\p\inja62ccb399ee74d\p\include\inja\renderer.hpp(378,71): warning C4244:         with
+C:\Users\erinzha\.conan2\p\inja62ccb399ee74d\p\include\inja\renderer.hpp(378,71): warning C4244:         [
+C:\Users\erinzha\.conan2\p\inja62ccb399ee74d\p\include\inja\renderer.hpp(378,71): warning C4244:             ValueType=__int64
+C:\Users\erinzha\.conan2\p\inja62ccb399ee74d\p\include\inja\renderer.hpp(378,71): warning C4244:         ]
+  (compiling source file 'main.cpp')
+  
+C:\Users\erinzha\.conan2\p\inja62ccb399ee74d\p\include\inja\renderer.hpp(378,27): warning C4244: 'initializing': conversion from 'ValueType' to 'const int', possible loss of data
+C:\Users\erinzha\.conan2\p\inja62ccb399ee74d\p\include\inja\renderer.hpp(378,27): warning C4244:         with
+C:\Users\erinzha\.conan2\p\inja62ccb399ee74d\p\include\inja\renderer.hpp(378,27): warning C4244:         [
+C:\Users\erinzha\.conan2\p\inja62ccb399ee74d\p\include\inja\renderer.hpp(378,27): warning C4244:             ValueType=__int64
+C:\Users\erinzha\.conan2\p\inja62ccb399ee74d\p\include\inja\renderer.hpp(378,27): warning C4244:         ]
+  (compiling source file 'main.cpp')
+  
+  TWAMP.vcxproj -> C:\Users\erinzha\OneDrive - Ericsson\Documents\ELTE\TWAMP\TWAMP\build\Debug\bin\TWAMP.exe
