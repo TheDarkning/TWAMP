@@ -1,0 +1,9 @@
+{
+    // Server config
+    "server_ip" : "0.0.0.0",
+    "server_port" : 443,
+
+    // Configuring SSL key and cert
+    "ssl_cert" : "certificate.pem",
+    "sll_key" : "private_key.pem"
+}

@@ -1,0 +1,86 @@
+*
+{
+    overflow-wrap: normal;
+}
+label, input
+{
+    margin: auto;
+    
+    --spacing: 0;
+}
+.grid input
+{
+    margin-bottom: auto;
+}
+
+/* .grid{
+    padding: auto;
+} */
+
+#run
+{
+    padding: 0;
+    --spacing: 0;
+}
+
+.container-fluid
+{
+    margin-top: 10px;
+    padding: 0 100px;
+}
+
+.container-fluid a.white{
+    color :#fff;
+}
+
+.container-fluid ul, .container-fluid a, footer a{
+    /* color: #11191f; */
+    color :#333333;
+
+}
+
+.wave.bottom{
+    margin-top: -72px;
+    aspect-ratio: 960/150;
+    background-image: url('./icons/wave_bottom.svg');
+    
+}
+.wave {
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+/*BCC6CC**/
+
+body .wave.top{
+    margin-top: -10px;
+    /* margin-bottom: -170px; */
+    aspect-ratio: 960/200;
+    background-image: url('./icons/wave_top.svg');
+}
+
+body main{
+    /* margin-top: -160px; 
+    margin-bottom: -166px; */
+    padding-top: 80px;
+}
+
+
+footer{
+    padding-top: 180px;
+    /*padding-bottom: 50px; */
+}
+
+section{
+    margin-bottom: 0;
+}
+
+main #results{
+    margin-top: 80px;
+}
+
+.grid{
+    text-align: right;
+}
