@@ -585,8 +585,8 @@ func setupSignals() {
 }
 
 func main() {
-	listenPtr := flag.String("listen", "localhost:2000", "listen address")
-	udpStart := flag.Uint("udp-start", 2000, "initial UDP port for tests")
+	listenPtr := flag.String("listen", "localhost:862", "listen address")
+	udpStart := flag.Uint("udp-start", 862, "initial UDP port for tests")
 	flag.Parse()
 
 	setupSignals()

@@ -3,30 +3,39 @@
 
 [[projects]]
   branch = "master"
+  digest = "1:1ba1d79f2810270045c328ae5d674321db34e3aae468eb4233883b473c5c0467"
   name = "github.com/golang/glog"
   packages = ["."]
+  pruneopts = "UT"
   revision = "23def4e6c14b4da8ac2ed8007337bc5eb5007998"
 
 [[projects]]
   branch = "master"
+  digest = "1:188c980b80d7f1ab5d0fa8bed7466e3ba1c0bcc86058499000e08012908bc75c"
   name = "github.com/tcaine/twamp"
   packages = ["."]
+  pruneopts = "UT"
   revision = "479bc5f2e74931a9f32e1ec9c174d162ac192e62"
 
 [[projects]]
   branch = "master"
+  digest = "1:a89caf43cb3a3c46343953ae9022fd422620c3ea52ffac0d086eee0bc8202f66"
   name = "golang.org/x/net"
   packages = [
     "bpf",
     "internal/iana",
     "internal/socket",
-    "ipv4"
+    "ipv4",
   ]
+  pruneopts = "UT"
   revision = "312bce6e941fc7e152b630a8643ea239afc12ddd"
 
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "6feac264bf71d0355d2fea70762117dafb210880b873405af38b3020ba4a6723"
+  input-imports = [
+    "github.com/golang/glog",
+    "github.com/tcaine/twamp",
+  ]
   solver-name = "gps-cdcl"
   solver-version = 1

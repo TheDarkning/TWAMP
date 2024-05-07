@@ -1,0 +1,20 @@
+Log file created at: 2024/05/07 11:04:24
+Running on machine: E-5CG20874FL
+Binary: Built with gc go1.20.4 for linux/amd64
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+I0507 11:04:24.772558    4244 main.go:143] Listening on localhost:862
+I0507 11:04:39.594224    4244 main.go:173] Handling control connection from client 127.0.0.1:42812
+I0507 11:04:39.605770    4244 main.go:531] Handling test session on port [::]:862
+I0507 11:04:45.232394    4244 main.go:225] Finished control connection from client 127.0.0.1:42812
+I0507 11:04:49.675624    4244 main.go:542] Finished test session on port [::]:862
+I0507 11:05:02.971567    4244 main.go:173] Handling control connection from client 127.0.0.1:42814
+I0507 11:05:02.982070    4244 main.go:531] Handling test session on port [::]:862
+I0507 11:05:05.645870    4244 main.go:225] Finished control connection from client 127.0.0.1:42814
+I0507 11:05:13.047753    4244 main.go:542] Finished test session on port [::]:862
+I0507 11:07:06.782291    4244 main.go:173] Handling control connection from client 127.0.0.1:42816
+E0507 11:07:06.928561    4244 main.go:164] Error receiving session: EOF
+I0507 11:07:35.706148    4244 main.go:173] Handling control connection from client 127.0.0.1:42818
+E0507 11:07:35.844226    4244 main.go:164] Error receiving session: EOF
+I0507 11:08:57.721093    4244 main.go:173] Handling control connection from client 127.0.0.1:42820
+E0507 11:08:57.873105    4244 main.go:164] Error receiving session: EOF
+I0507 11:10:30.792014    4244 main.go:573] Exiting, got signal: interrupt

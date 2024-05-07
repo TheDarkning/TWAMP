@@ -1,0 +1,7 @@
+Log file created at: 2024/05/07 11:07:06
+Running on machine: E-5CG20874FL
+Binary: Built with gc go1.20.4 for linux/amd64
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+E0507 11:07:06.928561    4244 main.go:164] Error receiving session: EOF
+E0507 11:07:35.844226    4244 main.go:164] Error receiving session: EOF
+E0507 11:08:57.873105    4244 main.go:164] Error receiving session: EOF
