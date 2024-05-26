@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/app/assets/style.css" class="stylesheet">
+    <title>TWAMP Test Interface</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>  
+    <div class="wave top">
+        <nav class="container-fluid">
+            <ul>
+                <li><strong>TWAMP Test GUI</strong></li>
+            </ul>
+            <ul>
+                <li><a href="/">Configure</a></li>
+                <li><a href="/submited">Chart</a></li>
+            </ul>
+        </nav>
+
+        <main class="container submited">
+            <section>
+                <div class="result">
+                    <hgroup>
+                        <h2>Results</h2>
+                        <h3>View your test outcomes</h3>
+                    </hgroup>
+                    <div class="result-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Packet ID</th>
+                                    <th>Latency (ms)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="resultTable">
+                                <!-- Results will be appended here by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+        
+    <div class="wave bottom submited">
+        <footer class="container">
+            <small>
+                <a href="#">Privacy Policy</a> • <a href="#">Terms of Use</a>
+            </small>
+        </footer>
+    </div>
+    
+     <!-- Embedding JSON data -->
+     <script id="tableData" type="application/json">{{.TableData}}</script>
+ 
+     <script>
+         function appendTable(data) {
+             const tableBody = document.getElementById('resultTable');
+             data.tableRows.forEach(row => {
+                 const tr = document.createElement('tr');
+                 const idTd = document.createElement('td');
+                 idTd.textContent = row.id;
+                 const latencyTd = document.createElement('td');
+                 latencyTd.textContent = row.latency;
+                 tr.appendChild(idTd);
+                 tr.appendChild(latencyTd);
+                 tableBody.appendChild(tr);
+             });
+         }
+ 
+         document.addEventListener('DOMContentLoaded', () => {
+             const tableData = JSON.parse(document.getElementById('tableData').textContent);
+             appendTable(tableData);
+         });
+     </script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/app/assets/style.css" class="stylesheet">
+    <title>TWAMP Test Interface</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>  
+    <div class="wave top">
+        <nav class="container-fluid">
+            <ul>
+                <li><strong>TWAMP Test GUI</strong></li>
+            </ul>
+            <ul>
+                <li><a href="/">Configure</a></li>
+                <li><a href="/result">Table</a></li>
+            </ul>
+        </nav>
+
+        <main class="container submited">
+            <section>
+                <div class="result">
+                    <hgroup>
+                        <h2>Results</h2>
+                        <h3>View your test outcomes</h3>
+                    </hgroup>
+
+                    <canvas id="twampChart" width="200px" height="100px"></canvas>
+
+                    <div id="summary" class="summary">
+                        <!-- Summary will be appended here by JavaScript -->
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+        
+    <div class="wave bottom submited">
+        <footer class="container">
+            <small>
+                <a href="#">Privacy Policy</a> • <a href="#">Terms of Use</a>
+            </small>
+        </footer>
+    </div>
+    
+     <!-- Embedding JSON data -->
+     <script id="chartData" type="application/json">{{.ChartData}}</script>
+     <script id="tableData" type="application/json">{{.TableData}}</script>
+ 
+     <script>
+         function renderChart(data) {
+             const ctx = document.getElementById('twampChart').getContext('2d');
+             const chart = new Chart(ctx, {
+                 type: 'line',
+                 data: {
+                     labels: data.labels,
+                     datasets: [{
+                         label: 'Latency (ms)',
+                         data: data.values,
+                         backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                         borderColor: 'rgba(75, 192, 192, 1)',
+                         borderWidth: 1
+                     }]
+                 },
+                 options: {
+                     responsive: true,
+                     maintainAspectRatio: false, // Allows custom height and width
+                     scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                color: 'rgba(255, 255, 255, 0.8)' // Light color for y-axis labels
+                            },
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.2)' // Light color for y-axis grid lines
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                color: 'rgba(255, 255, 255, 0.8)' // Light color for x-axis labels
+                            },
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.2)' // Light color for x-axis grid lines
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: 'rgba(255, 255, 255, 0.8)' // Light color for legend labels
+                            }
+                        }
+                    }
+
+                 }
+             });
+         }
+ 
+         function appendTable(data) {
+             const summaryDiv = document.getElementById('summary');
+             summaryDiv.innerHTML = `
+                 <p>${data.summary.packetLoss}</p>
+                 <p>${data.summary.minLatency}</p>
+                 <p>${data.summary.maxLatency}</p>
+                 <p>${data.summary.avgLatency}</p>
+             `;
+         }
+ 
+         document.addEventListener('DOMContentLoaded', () => {
+             const chartData = JSON.parse(document.getElementById('chartData').textContent);
+             const tableData = JSON.parse(document.getElementById('tableData').textContent);
+             renderChart(chartData);
+             appendTable(tableData);
+         });
+     </script>
+</body>
+</html>

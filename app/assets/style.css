@@ -1,0 +1,127 @@
+*{
+    overflow-wrap: normal;
+}
+label, input
+{
+    margin: auto;
+    
+    --spacing: 0;
+}
+.grid input
+{
+    margin-bottom: auto;
+}
+
+.container-fluid
+{
+    margin-top: 10px;
+    padding: 0 100px;
+}
+
+.container-fluid .white{
+    color :#fff;
+    margin-bottom: 0;
+    padding: 10px 15px;
+    --spacing: 0;
+}
+
+.container-fluid ul, .container-fluid a, footer a{
+    color :#333333;
+
+}
+
+.wave.bottom{
+    margin-top: -70px;
+    aspect-ratio: 960/150;
+    background-image: url('./icons/wave_bottom.svg');
+    
+}
+
+.wave.bottom.submited{
+    margin-top: -260px;
+    aspect-ratio: 960/250;
+    background-image: url('./icons/wave_sub.svg');
+}
+
+.wave {
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+
+body .wave.top{
+    margin-top: -10px;
+    aspect-ratio: 960/200;
+    background-image: url('./icons/wave_top.svg');
+}
+
+body main{
+    padding-top: 80px;
+}
+
+body main.container.submited{
+    padding-top: 52px !important;
+}
+
+footer{
+    padding-top: 190px;
+}
+
+.submited footer.container{
+    padding-top: 340px !important;
+}
+
+section{
+    margin-bottom: 0;
+}
+
+main #results{
+    margin-top: 80px;
+}
+
+form {
+    display:flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-right: 15%;
+}
+
+.field {
+    flex: 1 1 calc(33% - 1rem); 
+}
+
+.field.full-width {
+    flex: 1 1 100%;
+}
+
+#twampChart {
+    width: 100%;
+    height: 200px;
+    max-width: 100% !important;
+    max-height: 300px !important;
+}
+.result-table {
+    max-height: 372px;
+    overflow-y: scroll;
+    font-size: 15px;
+}
+.summary {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.summary p{
+    font-size: 15px !important;
+}
+
+.inactive{
+    pointer-events: none;
+    color: gray; 
+}
+
+#resultTable{
+    font-size: 15px !important;
+}

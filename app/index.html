@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <base href = "/"> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" rel="stylesheet">
+    <link rel="stylesheet" type ="text/css" href="/app/assets/style.css" class="stylesheet">
+    <title>TWAMP Test Interface</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js">
+    </script>
+</head>
+<body>  
+    <div class="wave top">
+        <nav class="container-fluid">
+            <ul>
+                <li><strong>TWAMP Test GUI</strong></li>
+            </ul>
+            <ul>
+                <li><a href="/">Configure</a></li>
+                <li><a href="#results" class = "inactive">Results</a></li>
+                <button class = "white" type="button" onclick="document.getElementById('twamp-form').submit()">Start Test</button>
+                <!-- <li><a class = "white" href="#" role="button">Start Test</a></li> -->
+            </ul>
+        </nav>
+
+        <main class="container">
+            <!-- <div class="grid"> -->
+                
+                <section id="config">
+                    <hgroup>
+                        <h2>Configuration</h2>
+                        <h3>Setup your TWAMP test parameters</h3>
+                    </hgroup>
+                    <form id = "twamp-form"class="grid" action="/submited" method="POST">
+                        <div class="field">
+                            <label for="target-ip">Target IP:</label>
+                            <input type="text" id="target-ip" name="target_ip" placeholder="192.168.1.1" required/>
+                        </div>
+                        <div class="field">
+                            <label for="target-ip">Port:</label>
+                            <input type="text" id="target-port" name="target_port" placeholder="862" required/>
+                        </div>
+                        
+                        <div class="field">
+                            <label for="packet-number">Packet number:</label>
+                            <input type="number" id="packet-number" name="packet_number" placeholder="20" required/>
+                        </div>
+                        <div class="field">
+                            <label for="interval">Interval (ms):</label>
+                            <input type="number" id="interval" name="interval" placeholder="50" required/>
+                        </div>
+                        <div class="field">
+                            <label for="packet-size">Packet Size (bytes):</label>
+                            <input type="number" id="packet-size" name="packet_size" placeholder="64" required/>
+                        </div>
+                        <!-- <div class="field">
+                            <label for="submit">  </label>
+                            <input type="submit" id="run" value = "Submit"></button>
+                        </div> -->
+                    </form>
+                </section>
+                <section id="results">
+                    <div class="result">
+                        <hgroup>
+                            <h2>Results</h2>
+                            <h3>View your test outcomes</h3>
+                        </hgroup>
+                        <p>No results to display. Start a test to see results here.</p>
+                    </div>
+                </section>
+            <!-- </div> -->
+        </main>
+    </div>
+        
+    <div class="wave bottom">
+        <footer class="container">
+            <small>
+                <a href="#">Privacy Policy</a> • <a href="#">Terms of Use</a>
+            </small>
+        </footer>
+    </div>
+</body>
+</html>
