@@ -1,32 +1,40 @@
 package handlers
 
 import (
-	"fmt"
-	"TWAMP/internal/commands"
+	// "TWAMP/internal/commands"
 	"TWAMP/internal/models"
-	"TWAMP/internal/utils"
+	// "TWAMP/internal/utils"
+	"fmt"
 	"html/template"
 	"net/http"
 	"strconv"
 )
 
+type Handlers struct {
+	StartServer       func(config models.PacketConfig) error
+	ReadOutputFile    func(filename string) ([]string, error)
+	GenerateChartData func(rttData []string) string
+	GenerateTableData func(rttData []string) string
+	ParseFiles        func(filenames ...string) (*template.Template, error)
+}
+
 var rawdata []string
 
-func Handler(w http.ResponseWriter, r *http.Request) {
+func (h *Handlers) Handler(w http.ResponseWriter, r *http.Request) {
 	switch r.URL.Path {
-	case "/submited":
-		FormHandler(w, r)
+	case "/submitted":
+		h.FormHandler(w, r)
 	case "/":
-		MainPage(w, r)
+		h.MainPage(w, r)
 	case "/result":
-		ResultHandler(w, r)
+		h.ResultHandler(w, r)
 	default:
 		http.NotFound(w, r)
 	}
 }
 
-func MainPage(w http.ResponseWriter, r *http.Request) {
-	t, err := template.ParseFiles("app/index.html")
+func (h *Handlers) MainPage(w http.ResponseWriter, r *http.Request) {
+	t, err := h.ParseFiles("app/index.html")
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
@@ -37,9 +45,9 @@ func MainPage(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func FormHandler(w http.ResponseWriter, r *http.Request) {
+func (h *Handlers) FormHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
-		Filler(w, r, rawdata)
+		h.Filler(w, r, rawdata)
 		return
 	}
 
@@ -74,13 +82,13 @@ func FormHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	fmt.Println(target_ip, target_port, packet_number, interval, packet_size)
-	err = commands.StartServer(config)
+	err = h.StartServer(config)
 	if err != nil {
 		http.Error(w, "Failed to start binary file: "+err.Error(), http.StatusInternalServerError)
 		return
 	}
 
-	rttData, err := utils.ReadOutputFile("out.txt")
+	rttData, err := h.ReadOutputFile("out.txt")
 	if err != nil {
 		http.Error(w, "Failed to read output file: "+err.Error(), http.StatusInternalServerError)
 		return
@@ -88,11 +96,11 @@ func FormHandler(w http.ResponseWriter, r *http.Request) {
 
 	rawdata = rttData
 
-	Filler(w, r, rawdata)
+	h.Filler(w, r, rawdata)
 }
 
-func ResultHandler(w http.ResponseWriter, r *http.Request) {
-	tableData := utils.GenerateTableData(rawdata)
+func (h *Handlers) ResultHandler(w http.ResponseWriter, r *http.Request) {
+	tableData := h.GenerateTableData(rawdata)
 
 	data := struct {
 		TableData template.JS
@@ -100,7 +108,7 @@ func ResultHandler(w http.ResponseWriter, r *http.Request) {
 		TableData: template.JS(tableData),
 	}
 
-	t, err := template.ParseFiles("app/result.html")
+	t, err := h.ParseFiles("app/result.html")
 	if err != nil {
 		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
 		return
@@ -111,13 +119,13 @@ func ResultHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func Filler(w http.ResponseWriter, r *http.Request, rdata []string) {
+func (h *Handlers) Filler(w http.ResponseWriter, r *http.Request, rdata []string) {
 	if len(rdata) == 0 {
 		http.Redirect(w, r, "/", http.StatusNoContent)
 		return
 	}
-	chartData := utils.GenerateChartData(rdata)
-	tableData := utils.GenerateTableData(rdata)
+	chartData := h.GenerateChartData(rdata)
+	tableData := h.GenerateTableData(rdata)
 
 	data := struct {
 		ChartData template.JS
@@ -127,7 +135,7 @@ func Filler(w http.ResponseWriter, r *http.Request, rdata []string) {
 		TableData: template.JS(tableData),
 	}
 
-	t, err := template.ParseFiles("app/submited.html")
+	t, err := h.ParseFiles("app/submitted.html")
 	if err != nil {
 		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
 		return

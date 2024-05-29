@@ -34,6 +34,22 @@ int main(int argc, char *argv[])
     parse_arguments(argc, argv, packet_count, 
                     interval_ms, payload_size, output_file);
 
+    // Validate constraints
+    if (packet_count <= 0) {
+        cerr << "Count must be greater than 0." << endl;
+        return 1;
+    }
+
+    if (interval_ms < 10) {
+        cerr << "Interval must be at least 10 ms." << endl;
+        return 1;
+    }
+
+    if (payload_size < 12 || payload_size > 65507) {
+        cerr << "Payload size must be between 12 and 65507 bytes." << endl;
+        return 1;
+    }
+
     string temp_file = output_file + ".tmp";
 
     ofstream out;
