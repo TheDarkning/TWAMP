@@ -6,8 +6,10 @@ import (
 	"TWAMP/internal/models"
 )
 
+var execCommand = exec.Command
+
 func StartServer(config models.PacketConfig) error {
-	cmd := exec.Command("./twamp/twamp_test",
+	cmd := execCommand("./twamp/twamp_test",
 		fmt.Sprintf("%s:%d", config.IP, config.Port),
 		fmt.Sprintf("--count=%d", config.Count),
 		fmt.Sprintf("--interval=%d", config.Interval),

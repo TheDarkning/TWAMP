@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"fmt"
 	"TWAMP/internal/commands"
 	"TWAMP/internal/models"
 	"TWAMP/internal/utils"
@@ -72,6 +73,7 @@ func FormHandler(w http.ResponseWriter, r *http.Request) {
 		Payload:  packet_size,
 	}
 
+	fmt.Println(target_ip, target_port, packet_number, interval, packet_size)
 	err = commands.StartServer(config)
 	if err != nil {
 		http.Error(w, "Failed to start binary file: "+err.Error(), http.StatusInternalServerError)

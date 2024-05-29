@@ -12,7 +12,8 @@
 #include <algorithm>
 #include <numeric>
 
-struct TWAMP_Packet {
+struct TWAMP_Packet 
+{
     uint32_t seqNumber;
     uint32_t timestampSec;
     uint32_t timestampUsec;

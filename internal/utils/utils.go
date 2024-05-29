@@ -40,9 +40,9 @@ func GenerateChartData(rttData []string) string {
 		if strings.HasPrefix(line, "ID ") {
 			parts := strings.Split(line, ": ")
 			if len(parts) == 2 {
-				labels = append(labels, parts[0])
 				value, err := strconv.ParseFloat(parts[1], 64)
 				if err == nil {
+					labels = append(labels, parts[0])
 					values = append(values, value)
 				}
 			}
