@@ -1,15 +1,15 @@
 package utils
 
 import (
-	"io/ioutil"
-	"os"
-	"testing"
-	"time"
 	"TWAMP/internal/models"
 	"encoding/json"
+	"io/ioutil"
+	"os"
 	"reflect"
 	"strconv"
 	"strings"
+	"testing"
+	"time"
 )
 
 // Test cases for ReadOutputFile
@@ -237,11 +237,11 @@ func TestGenerateChartData(t *testing.T) {
 			t.Fatalf("Failed to unmarshal JSON: %v", err)
 		}
 
-		if (!reflect.DeepEqual(chartData.Labels, expectedLabels)) {
+		if !reflect.DeepEqual(chartData.Labels, expectedLabels) {
 			t.Errorf("Expected labels %v, got %v", expectedLabels, chartData.Labels)
 		}
 
-		if (!reflect.DeepEqual(chartData.Values, expectedValues)) {
+		if !reflect.DeepEqual(chartData.Values, expectedValues) {
 			t.Errorf("Expected values %v, got %v", expectedValues, chartData.Values)
 		}
 	})

@@ -29,4 +29,3 @@ type TableData struct {
 	TableRows []TableRow  `json:"tableRows"`
 	Summary   SummaryData `json:"summary"`
 }
-
